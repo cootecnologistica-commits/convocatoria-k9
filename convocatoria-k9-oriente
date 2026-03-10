@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NO me MALTRATES, mejor EDUCARME - Programa K9</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(to bottom, #f1f5f9, #ffffff);
+        }
+
+        .header {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            background-image: url('perrito.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: background: linear-gradient(to right, rgba(15,23,42,0.9), rgba(30,58,138,0.7));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-content {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: bold;
+        }
+
+        .header p {
+            font-size: 2rem;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2rem;
+            border-top: 4px solid #1e3a8a;
+        }
+
+        .card.secondary {
+            border-top-color: #334155;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1rem;
+            color: #1e3a8a;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .card p {
+            color: #4b5563;
+        }
+
+        .card p.small {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+
+        .section-card.green {
+            background: linear-gradient(to bottom right, #f0fdf4, #d1fae5);
+            border: 2px solid #86efac;
+        }
+
+        .section-card h2 {
+            font-size: 1.875rem;
+            margin-bottom: 1.5rem;
+            color: #1e40af;
+        }
+
+        .section-card.green h2 {
+            color: #15803d;
+        }
+
+        .section-card h4 {
+            margin-bottom: 0.75rem;
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .section-card.green h4 {
+            color: #15803d;
+        }
+
+        .section-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-card ul li {
+            display: flex;
+            align-items: start;
+            margin-bottom: 0.5rem;
+            color: #4b5563;
+        }
+
+        .check-icon {
+            color: #2563eb;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .section-card.green .check-icon {
+            color: #16a34a;
+        }
+
+        .section-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .requirements {
+            background: #eff6ff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-left: 4px solid #1e40af;
+        }
+
+        .requirements h2 {
+            font-size: 1.875rem;
+            margin-bottom: 1.5rem;
+            color: #1e40af;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .requirement-item {
+            display: flex;
+            align-items: start;
+        }
+
+        .alert-icon {
+            color: #1e40af;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        .locations h2 {
+            font-size: 1.875rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #1f2937;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .location-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            transition: box-shadow 0.3s;
+        }
+
+        .location-card:hover {
+            box-shadow: 0 20px 25px rgba(0,0,0,0.15);
+        }
+
+        .location-header {
+            display: flex;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .location-icon {
+            width: 32px;
+            height: 32px;
+            color: #1e40af;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .location-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #1e40af;
+        }
+
+        .location-card p {
+            color: #4b5563;
+            line-height: 1.8;
+        }
+
+        .cta {
+            background: linear-gradient(to right, #1e3a8a, #1e293b);
+            border-radius: 16px;
+            box-shadow: 0 20px 25px rgba(0,0,0,0.2);
+            padding: 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #1e3a8a;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer .subtitle {
+            color: #94a3b8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1.25rem;
+            }
+
+            .two-column,
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* SVG Icons */
+        .icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+        }
+
+        .icon-large {
+            width: 48px;
+            height: 48px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-overlay">
+            <div class="header-content">
+                <h1>NO me MALTRATES, mejor EDUCARME</h1>
+                <p>"Educar también es Amar"</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Info Cards -->
+        <div class="info-cards">
+            <div class="card">
+                <svg class="icon-large card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <h3>Duración</h3>
+                <p>8 semanas de entrenamiento</p>
+            </div>
+
+            <div class="card secondary">
+                <svg class="icon-large card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <h3>Inscripción</h3>
+                <p>Dona 1 kg de croquetas</p>
+                <p class="small">Ayudas a lomitos rescatados</p>
+            </div>
+
+            <div class="card">
+                <svg class="icon-large card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <h3>Fechas Importantes</h3>
+                <p>Inscripción: 10-17 Marzo</p>
+                <p>Inicio: 23 Marzo</p>
+            </div>
+        </div>
+
+        <!-- Program Content -->
+        <div class="two-column">
+            <!-- Temas de Entrenamiento -->
+            <div class="section-card">
+                <h2>Temas de Entrenamiento</h2>
+
+                <div class="section-content">
+                    <h4>1. Corrección de Malos Hábitos</h4>
+                    <p style="color: #4b5563;">Agresión, miedo, dependencia, etc.</p>
+                </div>
+
+                <div class="section-content">
+                    <h4>2. Obediencia Básica</h4>
+                    <ul>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>Caminando con correa</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>Quieto sentado a punta de correa</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>Quieto echado a punta de correa</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>Acudir al llamado del manejador a punta de correa</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="section-content">
+                    <h4>3. Socialización</h4>
+                    <p style="color: #4b5563;">Perros de compañía en grupo</p>
+                </div>
+
+                <div class="section-content">
+                    <h4>4. Primeros Auxilios</h4>
+                    <p style="color: #4b5563;">En animales domésticos</p>
+                </div>
+
+                <div class="section-content">
+                    <h4>5. Responsabilidad Legal</h4>
+                    <p style="color: #4b5563;">Obligaciones y consecuencias legales de propietarios</p>
+                </div>
+            </div>
+
+            <!-- Sustentabilidad Ambiental -->
+            <div class="section-card green">
+                <h2>Sustentabilidad Ambiental</h2>
+
+                <div class="section-content">
+                    <div style="display: flex; align-items: start; margin-bottom: 1.5rem;">
+                        <span class="check-icon" style="font-size: 1.5rem; margin-right: 0.75rem;">✓</span>
+                        <div>
+                            <h4>ABC del Cuidado Canino</h4>
+                            <p style="color: #4b5563;">Taller completo sobre cuidados básicos</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: start; margin-bottom: 1.5rem;">
+                        <span class="check-icon" style="font-size: 1.5rem; margin-right: 0.75rem;">✓</span>
+                        <div>
+                            <h4>Asesoría Nutricional y Veterinaria</h4>
+                            <p style="color: #4b5563;">Consultas con expertos</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: start;">
+                        <span class="check-icon" style="font-size: 1.5rem; margin-right: 0.75rem;">✓</span>
+                        <div>
+                            <h4>Servicios Gratuitos</h4>
+                            <p style="color: #4b5563;">Vacunación antirrábica y desparasitación</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Requirements -->
+        <div class="requirements">
+            <h2>Requisitos</h2>
+            <div class="requirements-grid">
+                <div class="requirement-item">
+                    <span class="alert-icon">⚠</span>
+                    <p>Llenar el formulario en el enlace QR</p>
+                </div>
+                <div class="requirement-item">
+                    <span class="alert-icon">⚠</span>
+                    <p>Ser ciudadano residente del municipio de Tlalnepantla de Baz</p>
+                </div>
+                <div class="requirement-item">
+                    <span class="alert-icon">⚠</span>
+                    <p>Tener a tu mascota en buenas condiciones físicas y de salud</p>
+                </div>
+                <div class="requirement-item">
+                    <span class="alert-icon">⚠</span>
+                    <p>Correa de entrenamiento de 1.80mts</p>
+                </div>
+                <div class="requirement-item">
+                    <span class="alert-icon">⚠</span>
+                    <p>Collar de corrección</p>
+                </div>
+                <div class="requirement-item">
+                    <span class="alert-icon">⚠</span>
+                    <p>Agua para hidratar a tu mascota</p>
+                </div>
+                <div class="requirement-item">
+                    <span class="alert-icon">⚠</span>
+                    <p>Premios o juguete preferido de tu mascota</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Locations -->
+        <div class="locations">
+            <h2>Sedes de Entrenamiento</h2>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <div class="location-header">
+                        <svg class="location-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <div>
+                            <h3>Centro de Bienestar Animal "El Tenayo"</h3>
+                        </div>
+                    </div>
+                    <p>Avenida Alfredo del Mazo Vélez esquina avenida Prolongación 100 metros, colonia El Tenayo, C.P. 54140 Tlalnepantla de Baz.</p>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-header">
+                        <svg class="location-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <div>
+                            <h3>Centro de Bienestar Animal "Zona Oriente"</h3>
+                        </div>
+                    </div>
+                    <p>Calzada Ticomán no. 1075, Industrial La Presa, Centro Deportivo Cri-Cri, C.P. 54187, Tlalnepantla de Baz.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta">
+            <h2>¡Inscríbete Ahora!</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">Del 10 al 17 de Marzo</p>
+            <p>Con tu donación de 1 kg de croquetas, ayudas a los lomitos rescatados y le das a tu mascota la oportunidad de recibir educación profesional.</p>
+        <div class="cta-button" style="text-align:center;">
+            <p>Escanea el código QR para inscribirte</p>
+        
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScrWrcpBSapM5kiIIluASHrOlQsfKcomXUF07Ga45NE0JilQg/viewform" target="_blank">
+                <img src="ponienteQR.png" alt="QR de inscripción" style="width:200px; margin-top:15px;">
+            </a>
+        </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p style="font-size: 1.125rem; margin-bottom: 0.5rem;">Programa de Educación Canina K9</p>
+        <p class="subtitle">Tlalnepantla de Baz - Sustentabilidad Ambiental</p>
+    </footer>
+</body>
+</html>
